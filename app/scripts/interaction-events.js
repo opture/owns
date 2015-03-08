@@ -85,14 +85,13 @@ function animateInRow(top,items,parent,count,reverse){
 			count = items.length - 1;
 			reverse = true;
 			
-			
+
 		}else{
 			count = 0;
 			reverse = false;
 		}
 	}
-	//TODO if top is negative, then we need to reverse the order in which the items are animated.
-	//that means, start with items.length and make counter go down.
+	//TODO if top is negative and we want to scale, we need to recalculate top.
 	var percentSpeed = top / $(window).height();
 	var animateTime = 100 * percentSpeed;
 	if (animateTime < 50) {animateTime = 50;}
