@@ -1,0 +1,82 @@
+@-webkit-keyframes soft-fade-in {
+    from { opacity: 0.5; }
+    to   { opacity: 1; }
+}
+@keyframes soft-fade-in {
+    from { opacity: 0.5; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes fade-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+@keyframes fade-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@-webkit-keyframes move-in{
+	0% {  -webkit-transform:translate(-2rem,2rem);  transform:translate(-2rem,2rem); }
+	50% {  -webkit-transform:translate(0,1rem);  transform:translate(0,1rem); }
+	100% {  -webkit-transform:translate(0,0);  transform:translate(0,0); }
+}
+
+@keyframes move-in{
+	0% {  -webkit-transform:translate(-2rem,2rem);  transform:translate(-2rem,2rem); }
+	50% {  -webkit-transform:translate(0,1rem);  transform:translate(0,1rem); }
+	100% {  -webkit-transform:translate(0,0);  transform:translate(0,0); }
+}
+[move-in-slow]{
+	-webkit-animation: move-in 800ms;
+	        animation: move-in 800ms;	
+}
+[move-in-fast]{
+	-webkit-animation: move-in 200ms;
+	        animation: move-in 200ms;	
+}
+[fade-out-slow]{
+	-webkit-animation: fade-out 800ms;
+	        animation: fade-out 800ms;
+}
+[fade-out-medium]{
+	-webkit-animation: fade-out 500ms;
+	        animation: fade-out 500ms;
+}
+[fade-out-fast]{
+	-webkit-animation: fade-out 200ms;
+	        animation: fade-out 200ms;
+}
+
+[fade-in-slow]{
+	-webkit-animation: fade-in 800ms;
+	        animation: fade-in 800ms;
+}
+[fade-in-medium]{
+	-webkit-animation: fade-in 500ms;
+	        animation: fade-in 500ms;
+}
+[fade-in-fast]{
+	-webkit-animation: fade-in 200ms;
+	        animation: fade-in 200ms;
+}
+
+[soft-fade-in-slow]{
+	-webkit-animation: soft-fade-in 800ms;
+	        animation: soft-fade-in 800ms;
+}
+[soft-fade-in-medium]{
+	-webkit-animation: soft-fade-in 500ms;
+	        animation: soft-fade-in 500ms;
+}
+[soft-fade-in-fast]{
+	-webkit-animation: soft-fade-in 200ms;
+	        animation: soft-fade-in 200ms;
+}
