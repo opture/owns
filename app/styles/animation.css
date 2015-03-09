@@ -1,3 +1,22 @@
+.animated-fast {
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-medium {
+  -webkit-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated-slow {
+  -webkit-animation-duration: 800ms;
+  animation-duration: 800ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 @-webkit-keyframes soft-fade-in {
     from { opacity: 0.5; }
     to   { opacity: 1; }
@@ -36,11 +55,11 @@
 }
 [move-in-slow]{
 	-webkit-animation: move-in 800ms;
-	        animation: move-in 800ms;	
+	        animation: move-in 800ms;
 }
 [move-in-fast]{
 	-webkit-animation: move-in 200ms;
-	        animation: move-in 200ms;	
+	        animation: move-in 200ms;
 }
 [fade-out-slow]{
 	-webkit-animation: fade-out 800ms;

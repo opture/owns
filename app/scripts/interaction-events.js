@@ -3,24 +3,24 @@ function animateToTop(relativePx, item,parent){
 	'use strict';
 	var translateLeft = 0;
 	var percentSpeed = relativePx / $(window).height();
-	var animateTime = 700 * percentSpeed;
+	var animateTime = 500 * percentSpeed;
 	if (animateTime < 200) {animateTime = 200;}
 
 
 
 	var animatee = item.clone();
 
-	translateLeft = ( item.offset().left - (item.closest('[container]').width() / 2 - item.width() / 2 ) ) * -1;
+	translateLeft = ( item.offset().left - ( $(window).width() / 2 - item.outerWidth() / 2 ) ) * -1;
 
 	animatee.offset(item.offset());
 	animatee.css({
-		'width': item.css('width'), 
+		'width': item.css('width'),
 		'position':'absolute',
 		'background':'white',
 		'-webkit-transition':'-webkit-transform ' + animateTime + 'ms ease-in',
 		'transition':'transform ' + animateTime + 'ms ease-in'
 	});
-	
+
 	if (item.attr('hidden')) {
 		console.log('hidden element');
 		item.removeAttr('hidden');
@@ -33,34 +33,34 @@ function animateToTop(relativePx, item,parent){
 
 		}else
 		{
-			relativePx =  $(window).height() - (item.offset().top - relativePx);	
+			relativePx =  $(window).height() - (item.offset().top - relativePx);
 		}
 
-		
+
 		animatee.offset({top: $(window).height(), left:item.offset().left});
 		animatee.removeAttr('hidden');
-		translateLeft = ( item.offset().left - (item.closest('[container]').width() / 2 - item.width() / 2 ) ) * -1;
+		translateLeft = ( item.offset().left - ( $(window).width() / 2 - item.outerWidth() / 2 ) ) * -1;
 		item.attr('hidden','');
 	}
 
 	//item.css('opacity','0.3');
 
-	
+
 	console.log(animateTime);
 
-	
+
 	setTimeout(function(){
 		parent.append(animatee);
 	},1);
-	
-	
+
+
 	setTimeout(function(){
 		if ($(document).width()>767){
 			animatee.css({
 				'-webkit-transform':'translate(' + translateLeft + 'px,' + relativePx * -1 + 'px) scale(1.5,1.5)',
 				'transform':'translate(' + translateLeft + 'px,' + relativePx * -1 + 'px) scale(1.5,1.5)',
 				'opacity':'1'
-			});	
+			});
 		} else {
 			animatee.css({
 				'-webkit-transform':'translate(' + translateLeft + 'px,' + relativePx * -1 + 'px)',
@@ -84,7 +84,8 @@ function animateInRow(top,items,parent,count,reverse){
 		if (top < 0){
 			count = items.length - 1;
 			reverse = true;
-			
+
+
 
 		}else{
 			count = 0;
@@ -101,11 +102,11 @@ function animateInRow(top,items,parent,count,reverse){
 			console.log('recalculate top');
 			console.log('count: ' + count);
 			if (reverse){
-				top = top + ((items.eq(count).height() * 0.5  ) / 2);  	
+				top = top + ((items.eq(count).height() * 0.5  ) / 2);
 			}else{
-				top = top - ((items.eq(count).height() * 0.5  ) / 2);  
+				top = top - ((items.eq(count).height() * 0.5  ) / 2);
 			}
-		}		
+		}
 
 		animateToTop(top,items.eq(count),parent);
 
@@ -113,18 +114,18 @@ function animateInRow(top,items,parent,count,reverse){
 			console.log('recalculate top');
 			console.log('count: ' + count);
 			if (reverse){
-				top = top + ((items.eq(count).height() * 0.5  ) / 2);  	
+				top = top + ((items.eq(count).height() * 0.5 ) / 2 );
 			}else{
-				top = top - ((items.eq(count).height() * 0.5  ) / 2);  
+				top = top - ((items.eq(count).height() * 0.5  ) / 2);
 			}
 		}
 
 		if (reverse){
 			count--;
 		} else {
-			count++;	
+			count++;
 		}
-		
+
 		animateInRow(top,items,parent,count,reverse);
 	},animateTime);
 }
@@ -133,7 +134,7 @@ $('[hero-animation]').on('tap', function(){
 	var element= $(this);
 	setTimeout(function(){
 		element.parent().siblings().css('transition','opacity 200ms cubic-bezier(0.420, 0.000, 0.580, 1.000)');
-		element.parent().siblings().css('opacity','0.3');		
+		element.parent().siblings().css('opacity','0.3');
 	},1);
 
 	var offset = element.offset();
@@ -157,7 +158,7 @@ $('[hero-animation]').on('tap', function(){
             //$('#content').css('overflow','scroll');
             //$('#content').css('-webkit-overflow-scrolling', 'touch');
             $overlay.remove();
-        }, 200);		
+        }, 200);
 	}).on('swipeRight', function(){
 		$overlay.css('-webkit-transform','translate(100%,0)');
 		$overlay.css('transform','translate(100%,0)');
@@ -166,17 +167,25 @@ $('[hero-animation]').on('tap', function(){
         setTimeout(function(){
         	//Enable scrolling on main content again.
             //$('#content').css('overflow','scroll');
-            //$('#content').css('-webkit-overflow-scrolling', 'touch');                   
+            //$('#content').css('-webkit-overflow-scrolling', 'touch');
             $overlay.remove();
         }, 200);
 	});
 	var container = $('<div/>');
 	$overlay.append(container);
 
-	
+
 	$('body').append($overlay);
-	
-	animateInRow(offset.top,element.children(), container);
+
+ 	console.log('topp: ' + offset.top);
+ 	var top = 0;
+ 	if ($(window).width() > 767 && offset.top < 0) {
+ 	top=(offset.top - element.height()*0.75);
+ 	}else{
+ 		top=offset.top;
+ 	}
+
+	animateInRow(top,element.children(), container);
 
 });
 
