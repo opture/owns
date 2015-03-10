@@ -99,3 +99,27 @@
 	-webkit-animation: soft-fade-in 200ms;
 	        animation: soft-fade-in 200ms;
 }
+
+
+
+
+.sidebar{
+	perspective:300px;
+	margin:0;
+	height:40rem;
+	position:relative;
+}
+.sidebar-inner{
+	width:4rem;
+	transition:all 1s ease-out;
+	transform:rotateY(-80deg) ;
+	transform-origin:right;
+	position:absolute;
+	background:silver;
+}
+.showsidebar .sidebar-inner{
+	transform: rotateY(0deg);
+}
+.showsidebar [container]{
+	transform:translate(4rem);
+}

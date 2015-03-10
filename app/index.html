@@ -29,9 +29,22 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
+  
     <div class="app" fit pad-2 scroll>
-    <div style="" container>
+        <div class="sidebar" style="">
+          <div class="sidebar-inner" style="">
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/nightlife" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/business" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/nature" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/food" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/abstract" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/city" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/people" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/transport" />
+                <img margin-none class="icon" src="http://lorempixel.com/48/48/sports" />
+        </div>
+      </div>  
+    <div style="background:blue" container fit  >
         <div min-320-col-1 margin-none min-480-col-1 min-768-col-2 min-992-col-2 pad-2>
         <article hero-animation overflow-hidden margin-none shadow-z-1 class="animated-medium hidden" >
                     <h2 center-text pad-1 margin-none>Rubrik</h2>
@@ -102,21 +115,13 @@
             </article>
         </div>
         </div>
-            <div topbar>
-        <img clasS="icon" src="images/entypo+/menu.svg" id="topMenuButton" />
+    
+
+        <div topbar>
+          <img clasS="icon" src="images/entypo+/menu.svg" id="topMenuButton" />
+        </div>
     </div>
-    </div>
-    <div sidebar>
-        <img class="icon" margin-none pad-2 src="http://lorempixel.com/48/48/nightlife" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/business" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/nature" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/food" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/abstract" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/city" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/people" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/transport" />
-        <img margin-none class="icon" src="http://lorempixel.com/48/48/sports" />
-    </div>
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -163,7 +168,8 @@
             toggleSideBar();
         });
         $('#topMenuButton').on('tap', function(){
-            toggleSideBar();
+            //toggleSideBar();
+            $('.app').toggleClass('showsidebar');
         })
         function toggleSideBar(){
             $('[sidebar]').toggleClass('sidebarvisible');
