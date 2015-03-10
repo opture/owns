@@ -1,0 +1,80 @@
+
+<html>
+<head>
+<style>
+.icon {
+    width:3rem;
+    margin:0;
+    padding:0.5rem;
+}
+.app{
+	width:20rem;
+	height:40rem;
+	position:relative;
+	overflow:hidden;
+}
+.wrapper{
+	perspective:300px;
+	margin:0;
+	height:40rem;background:silver;position:relative;
+}
+.sidebar{
+	width:4rem;transition:all 0.3s ease-out;transform:rotateY(-80deg) ;transform-origin:100;position:absolute;left:-6.25rem;
+}
+.showsidebar{
+	transform: rotateY(0deg);
+	left:0;
+}
+#content{
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	border:1px solid black;
+	transition:all 0.3s ease-out;
+	background:green;
+}
+#content.showsidebar{
+	transform:translate(4rem);
+}
+</style>
+</head>
+<body style="height:100%;width:100%;">
+<div class="app">
+	<div class="wrapper" style="">
+		<div class="inner sidebar" style="">
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/nightlife" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/business" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/nature" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/food" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/abstract" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/city" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/people" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/transport" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/sports" />
+		</div>
+	</div>
+	<div id="content" >
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+	setInterval(function(){
+		$('.inner').toggleClass('showsidebar');
+		$('#content').toggleClass('showsidebar');
+	},1000);
+
+
+</script>
+
+</body>
+</html>

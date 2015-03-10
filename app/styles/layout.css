@@ -34,8 +34,42 @@
     bottom:0;
     left:0;
 }
-
-/* 
+[sidebar]{
+    position:absolute;
+    width:4rem;
+    left:-4rem;
+    right:100%;
+    bottom:0;
+    top:0;
+    -webkit-transition: -webkit-transform 500ms linear;
+    transition:transform 500ms linear;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    text-align:center;
+}
+[sidebar].sidebarvisible {
+    -webkit-transform: translate(4rem,0) scale(1);
+    transform:translate(4rem, 0) scale(1);
+}
+[sidebar]  .icon {
+    width:3rem;
+    margin:0;
+    padding:0.5rem;
+}
+[topbar] {
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:2.5rem;
+    border-bottom:1px solid red;
+}
+[topbar] .icon {
+    width:2.5rem;
+    margin:0;
+    padding:0.5rem;
+}
+/*
     Padding attibutes
     Sets the padding to a multiple of quarter of an rem.
     ie. 1->0.25rem 2 -> 0.5rem ... 8 -> 2rem.
@@ -507,7 +541,7 @@
 [hidden]{
     display:none;
 }
-    /* Custom, iPhone Retina 20rem */ 
+    /* Custom, iPhone Retina 20rem */
     @media only screen and (min-width : 320px) {
         [container]{
             max-width:20rem;
@@ -518,7 +552,7 @@
         }
         [min-320-col-1]{
             width: 100%;
-            display:inline-block;   
+            display:inline-block;
         }
         [min-320-col-2]{
             width: 50%;
@@ -542,7 +576,7 @@
         }
     }
 
-    /* Extra Small Devices, Phones 30rem */ 
+    /* Extra Small Devices, Phones 30rem */
     @media only screen and (min-width : 480px) {
         [container]{
             max-width:30rem;
