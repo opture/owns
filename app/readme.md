@@ -46,6 +46,18 @@ Sets the element to the max size of its parent or the window.
 (position:absolute;top,bottom,right,left to 0;)
 Needs to have a relative or absolute positioned parent.
 
+##Columns (Grid style)
+Sets the width of the container to fit for X column layout.
+This is not a floating grid, it uses inline-block, its easier to left, center and right align.
+
+###min-320-col-[X]
+320-479 pixels screenwidth
+###min-480-col-[X]
+480-767 pixels screenwidth
+###min-768-col-[X]
+768-991 pixels screenwidth
+###min-992-col-[X]
+992-^ picels screenwidth
 --------------
  shadow-z-[z]
 --------------
