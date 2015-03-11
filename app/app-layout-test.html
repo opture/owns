@@ -1,0 +1,369 @@
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>owns</title>
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<style>
+
+
+@-webkit-keyframes zoomInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+    transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+    transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+}
+
+@keyframes zoomInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+    -ms-transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+    transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+    -ms-transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+    transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+}
+@-webkit-keyframes bounceInLeft {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-4rem, 0, 0);
+    transform: translate3d(-4rem, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0);
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+
+  100% {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes bounceInLeft {
+  0%, 60%, 75%, 90%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100px, 0, 0);
+    -ms-transform: translate3d(-100px, 0, 0);
+    transform: translate3d(-100px, 0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0);
+    -ms-transform: translate3d(25px, 0, 0);
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    -ms-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    -ms-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+
+  100% {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+}
+
+.bounceInLeft {
+  -webkit-animation-name: bounceInLeft;
+  animation-name: bounceInLeft;
+}
+
+
+body, html {
+       -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+       -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+       -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+
+
+       background-attachment:fixed;
+       font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+       font-size:16px;
+       height:100%;
+       margin:0px;
+       padding:0px;
+       text-transform:uppercase;
+       width:100%;
+       overflow:hidden;
+
+   }
+img.icon {
+    width:3rem;
+    margin:0;
+    padding:0.5rem;
+}
+/* app is the div always present, never replaced. It tells about how the app shoudl behave considering sidebar menu and topbar.*/
+[app]{
+
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	overflow:hidden;
+
+}
+/* This is where the content resides, the actual app content.*/
+[main]{
+	position:absolute;
+	top:0rem;
+	left:0;
+	bottom:0;
+	right:0;
+
+	padding-top:2.5rem; /* Padding to make content scroll behind the topbar, this must be the same as the topbar. */
+
+	overflow-x:hidden; /* dont scroll on x-axis */
+	overflow-y:scroll; /* scroll on y-axis */
+	background: linear-gradient(to bottom, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%);
+}
+
+[topbar]{
+	position:absolute;
+	top:0;
+	right:0;
+	left:0;
+	height:2.5rem; /* change the padding for [main] to reflect the height of topbar. */
+	background: linear-gradient(to bottom, rgba(200,200,200,0.65) 0%,rgba(200,200,200,0.15) 100%);
+	transition:all 0.3s ease-out;
+}
+
+[sidebar]{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	overflow:hidden;
+}
+[sidebar] [sidebar-inner]{
+	overflow-x:hidden;
+	overflow-y:scroll;
+	position:absolute;
+	top:2.5rem;
+	left:0;
+	bottom:0;
+
+}
+[topbar] [togglesidebar]{
+	width:2rem;
+	height:2rem;
+	margin-top:0.25rem;
+	margin-left:0.25rem;
+	transition:all 0.3s ease-out;
+	transform:rotate(0);
+	background-image:url(http://localhost:9035/images/entypo+/menu.svg);
+}
+/* Sidebar-foldin */
+/* ==================*/
+
+[sidebar-foldin] [sidebar]{
+	right:0;
+	perspective:500px;
+	background:transparent;
+}
+
+[sidebar-foldin] [sidebar] [sidebar-inner]{
+		position:fixed;
+		width:4rem;
+		top:0rem;
+		padding-top:2.5rem;
+		transition:all 0.3s ease-out;
+		transform:rotateY(-90deg) ;
+		transform-origin:100;
+
+		left:-6.25rem;
+		bottom:0;
+		overflow-x:hidden;
+		overflow-y:scroll;
+		opacity:0;
+	}
+[sidebar-foldin] [main]{
+	transition:transform 0.3s ease-out;
+}
+[sidebar-foldin].showsidebar [sidebar] [sidebar-inner]{
+	transform: rotateY(0deg);
+	opacity:1;
+	left:0;
+
+}
+
+[sidebar-foldin].showsidebar [main]{
+	transform:translate(4rem);
+}
+
+[sidebar-foldin].showsidebar [topbar]{
+	transform:translate(4rem);
+}
+
+
+/* Sidebar-slidein */
+/* ==================*/
+
+[sidebar-slidein] [sidebar] [sidebar-inner]{
+	width:4rem;
+	display:none;
+	/* transition:all 0.3s ease-out; */
+	background:silver;
+	z-index:3;
+}
+
+[sidebar-slidein].showsidebar [sidebar] [sidebar-inner]{
+	display:inline-block;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s ;
+  animation-easing: ease-in;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+	  -webkit-animation-name: bounceInLeft;
+  animation-name: bounceInLeft;
+}
+
+[sidebar-slidein] [sidebar]{
+
+	width:5rem; /* If you use shadow on sidebar-inner make sure this one is wide enough to fit the shadow. */
+	margin-right:2rem;
+	background:white;
+}
+
+[sidebar-slidein] [main]{
+	transition:all 0.3s ease-out;
+}
+
+
+
+[sidebar-slidein].showsidebar [main]{
+	/* transform:translate(4rem); */
+}
+
+[sidebar-slidein].showsidebar [topbar]{
+	 /* transform:translate(13rem); */ /* set to sidebar width. */
+}
+
+.showsidebar [topbar] [togglesidebar]{
+		opacity:1;
+		transform:rotate(270deg);
+		background-image:url(http://localhost:9035/images/entypo+/cross.svg);
+	}
+
+</style>
+</head>
+<body >
+<div app sidebar-slidein topbar-hideonscroll>
+	<div sidebar>
+		<div sidebar-inner class="inner sidebar" style="">
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/nightlife" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/business" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/nature" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/food" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/abstract" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/city" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/people" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/transport" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/sports" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/people" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/transport" />
+		        <img margin-none class="icon" src="http://lorempixel.com/48/48/sports" />
+		</div>
+	</div>
+	<div main>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, aliquam.</p>
+	</div>
+	<div topbar hide-on-scroll>
+		<div togglesidebar></div>
+	</div>
+</div>
+
+<script>
+	//Toggle if app should show sidebar.
+	document.querySelectorAll("[togglesidebar]")[0].addEventListener('click', function(){
+		document.querySelectorAll("[app]")[0].classList.toggle('showsidebar');
+	});
+
+</script>
+
+</body>
+</html>
