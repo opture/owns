@@ -23,6 +23,14 @@ Structure for app
 #### app
 Defines the root for the application, add attributes for sidebar and topbar behavior.
 
+#### main
+Where content is placed this is set as scrollable
+#### sidebar
+Sidebar drawer, place shortcuts here.
+#### topbar
+The topbar
+
+
 Layout attributes
 -----
  fit
