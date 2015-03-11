@@ -18,15 +18,17 @@
     	$(function(){
             jQuery('.hidden').viewportChecker({
                 classToAdd: 'fadeInLeft ',
-                offset:20
+                offset:10
             });
         });
-        $('.app').on('scroll', function(){
+        $('[main]').on('scroll', function(){
             console.log('st: ' + $(this).scrollTop());
             console.log('ih: ' + $(this).innerHeight());
             console.log('sh: ' + this.scrollHeight);
             if(this.scrollHeight -100 < ($(this).innerHeight() + $(this).scrollTop()) ){
                 console.log("hit ol' rock bottom, reload more content");
+                //Trigger the event for the current store to fetch more data from end-point.
+
             }
         });
 
