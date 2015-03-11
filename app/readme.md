@@ -1,5 +1,28 @@
 readme.txt
 
+
+--
+Structure for app
+--
+
+```
+<div app>
+  <div sidebar>
+    <div sidebar-inner>
+    </div>
+  </div>
+  <div main>
+  </div
+  <div topbar>
+    <div togglesidebar></div>
+  </div>
+</div>
+```
+
+###Behavioral attributes
+#### app
+Defines the root for the application, add attributes for sidebar and topbar behavior.
+
 Layout attributes
 -----
  fit
