@@ -5,6 +5,31 @@
 	document.querySelectorAll("[togglesidebar]")[0].addEventListener('click', function(){
 		document.querySelectorAll("[app]")[0].classList.toggle('showsidebar');
 	});
+	$('[app]').on('tap', function(){
+		console.log('remove sidebar');
+		if ( this.classList.contains('showsidebar') ){
+			this.classList.remove('showsidebar');	
+			return false;
+		}
+		
+		
+	});
+		//Use the viewportchecker to show elements.
+    	$(function(){
+            jQuery('.hidden').viewportChecker({
+                classToAdd: 'fadeInLeft ',
+                offset:20
+            });
+        });
+        $('.app').on('scroll', function(){
+            console.log('st: ' + $(this).scrollTop());
+            console.log('ih: ' + $(this).innerHeight());
+            console.log('sh: ' + this.scrollHeight);
+            if(this.scrollHeight -100 < ($(this).innerHeight() + $(this).scrollTop()) ){
+                console.log("hit ol' rock bottom, reload more content");
+            }
+        });
+
 function animateToTop(relativePx, item,parent){
 	'use strict';
 	var translateLeft = 0;
@@ -140,9 +165,9 @@ function animateInRow(top,items,parent,count,reverse){
 		animateInRow(top,items,parent,count,reverse);
 	},animateTime);
 }
-$('[hero-animation]').on('tap', function(){
-	'use strict';
-	var element= $(this);
+function heroAnimation(element){
+		'use strict';
+	var element= $(element);
 	//Fade out all the sibling elements.
 	setTimeout(function(){
 		element.parent().siblings().css('transition','opacity 200ms cubic-bezier(0.420, 0.000, 0.580, 1.000)');
@@ -160,7 +185,7 @@ $('[hero-animation]').on('tap', function(){
 		element.children().css('opacity','1');
 		element.parent().parent().children().css('opacity','1');
 		$overlay.remove();
-	}).on('swipeLeft', function(){
+	}).on('swipeleft', function(){
 
 		$overlay.css('-webkit-transform','translate(-100%,0)');
         $overlay.css('transform','translate(-100%,0)');
@@ -173,7 +198,7 @@ $('[hero-animation]').on('tap', function(){
             //$('#content').css('-webkit-overflow-scrolling', 'touch');
             $overlay.remove();
         }, 200);
-	}).on('swipeRight', function(){
+	}).on('swiperight', function(){
 		$overlay.css('-webkit-transform','translate(100%,0)');
 		$overlay.css('transform','translate(100%,0)');
 		element.children().css('opacity','1');
@@ -207,5 +232,8 @@ $('[hero-animation]').on('tap', function(){
  	//Call recursive function to animate all the childrens with delay.
 	animateInRow(top,element.children(), container);
 
+}
+$('[hero-animation]').on('tap', function(){
+	heroAnimation(this);
 });
 

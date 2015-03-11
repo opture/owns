@@ -27,11 +27,7 @@ body, html {
   width:100%;
   overflow:hidden;
 }
-img.icon {
-    width:3rem;
-    margin:0;
-    padding:0.5rem;
-}
+
 
 /* app is the div always present, never replaced. It contains the sidebar, the topbar and the main holder of content. */
 /* This element shall never be scrolled */
