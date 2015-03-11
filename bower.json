@@ -3,7 +3,6 @@
   "private": true,
   "dependencies": {
     "jquery": "~1.11.1",
-    "zepto": "~1.1.6",
     "jquery-viewport-checker": "~1.7.4"
   }
 }

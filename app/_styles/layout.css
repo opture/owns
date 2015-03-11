@@ -1,6 +1,4 @@
-*, *:before,*:after{
-    box-sizing: border-box;
-}
+
 
 [column-1]{
     width:100%;
@@ -27,48 +25,7 @@
     display:inline-block;
 }
 
-[fit]{
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-}
-[sidebar]{
-    position:absolute;
-    width:4rem;
-    left:-4rem;
-    right:100%;
-    bottom:0;
-    top:0;
-    -webkit-transition: -webkit-transform 500ms linear;
-    transition:transform 500ms linear;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-    text-align:center;
-}
-[sidebar].sidebarvisible {
-    -webkit-transform: translate(4rem,0) scale(1);
-    transform:translate(4rem, 0) scale(1);
-}
-[sidebar]  .icon {
-    width:3rem;
-    margin:0;
-    padding:0.5rem;
-}
-[topbar] {
-    position:absolute;
-    left:0;
-    right:0;
-    top:0;
-    height:2.5rem;
-    border-bottom:1px solid red;
-}
-[topbar] .icon {
-    width:2.5rem;
-    margin:0;
-    padding:0.5rem;
-}
+
 /*
     Padding attibutes
     Sets the padding to a multiple of quarter of an rem.
@@ -486,23 +443,18 @@
    text-align:center;
 }
 [shadow-z-1]{
-    -webkit-box-shadow:3px 3px 5px rgba(44,44,44,0.7);
             box-shadow:3px 3px 5px rgba(44,44,44,0.7);
 }
 [shadow-z-2]{
-    -webkit-box-shadow:5px 5px 10px rgba(44,44,44,0.7);
             box-shadow:5px 5px 10px rgba(44,44,44,0.7);
 }
 [shadow-z-3]{
-    -webkit-box-shadow:8px 8px 15px rgba(44,44,44,0.7);
             box-shadow:8px 8px 15px rgba(44,44,44,0.7);
 }
 [shadow-z-4]{
-    -webkit-box-shadow:10px 10px 20px rgba(44,44,44,0.7);
             box-shadow:10px 10px 20px rgba(44,44,44,0.7);
 }
 [shadow-z-5]{
-    -webkit-box-shadow:13px 13px 25px rgba(44,44,44,0.7);
             box-shadow:13px 13px 25px rgba(44,44,44,0.7);
 }
 [main-center]{
