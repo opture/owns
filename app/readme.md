@@ -12,6 +12,7 @@ Structure for app
     </div>
   </div>
   <div main>
+    <div container></div>
   </div
   <div topbar>
     <div togglesidebar></div>
@@ -23,10 +24,16 @@ Structure for app
 #### app
 Defines the root for the application, add attributes for sidebar and topbar behavior.
 
+* sidebar-foldin
+* sidebar-slidein
+* topbar-hideonscroll
+ 
+
 #### main
 Where content is placed this is set as scrollable
+Add ```<div container></div> ``` to make the content responsive.
 #### sidebar
-Sidebar drawer, place shortcuts here.
+Sidebar drawer, place the content for the sidebar in sidebar-inner. The inner element is needed for the foldin animation. 
 #### topbar
 The topbar
 
