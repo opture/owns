@@ -58,7 +58,7 @@ This is not a floating grid, it uses inline-block, its easier to left, center an
 768-991 pixels screenwidth
 ###min-992-col-[X]
 992-infinity pixels screenwidth
---------------
+
  shadow-z-[z]
 --------------
 [z] -> 1-4
