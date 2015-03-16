@@ -1,0 +1,209 @@
+/* Main app layout. Keep only containers here, and focus on keeping behaviorial propreties and not layout properties. */
+$topbar-height: 2.5rem;
+$background-gradient: linear-gradient(to bottom, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%);
+@mixin fit{
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
+*, *:before,*:after{
+    box-sizing: border-box;
+}
+
+body, html {
+  -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+
+  background-attachment:fixed;
+  font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-size:16px;
+  height:100%;
+  margin:0px;
+  padding:0px;
+  text-transform:uppercase;
+  width:100%;
+  overflow:hidden;
+}
+
+
+/* app is the div always present, never replaced. It contains the sidebar, the topbar and the main holder of content. */
+/* This element shall never be scrolled */
+[app]{
+
+  @include fit;
+  overflow:hidden;
+
+}
+/* This is where the content resides, the actual app content.*/
+[main]{
+  @include fit;
+
+  padding-top:$topbar-height; /* Padding to make content scroll behind the topbar, this must be the same as the topbar. */
+
+  overflow-x:hidden; /* dont scroll on x-axis */
+  overflow-y:scroll; /* scroll on y-axis */
+  background: $background-gradient
+}
+
+/* Topbar, place menu icon and header here.  */
+[topbar]{
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  height:$topbar-height; /* change the padding for [main] to reflect the height of topbar. */
+  background: linear-gradient(to bottom, rgba(200,200,200,0.65) 0%,rgba(200,200,200,0.15) 100%);
+  transition:all 0.3s ease-out;
+}
+
+/* Drawer sidebar, hidden most of the time, but revealed when app get class showsidebar. */
+[sidebar]{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  overflow:hidden;
+}
+/* Inner container for sidebar, neede to make foldin animations, therefore always present. */
+[sidebar] [sidebar-inner]{
+  overflow-x:hidden;
+  overflow-y:scroll;
+  position:absolute;
+  top:$topbar-height;
+  left:0;
+  bottom:0;
+
+}
+/* Default sidemenu toggler. Set the attribute to any element in the topbar. */ 
+[topbar] [icon] {
+  width:2rem;
+  height:2rem;
+  margin-top:0.25rem;
+  margin-left:0.25rem;  
+}
+[topbar] [togglesidebar]{
+  width:2rem;
+  height:2rem;
+  margin-top:0.25rem;
+  margin-left:0.25rem;
+  transition:all 0.3s ease-out;
+  transform:rotate(0);
+  background-image:url(http://localhost:9035/images/entypo+/menu.svg);
+}
+
+/* ============================================================================= */
+[fit]{
+  @include fit;
+}
+
+[scroll-vertical]{
+  overflow-x:hidden;
+  overflow-y:scroll;  
+}
+
+[scroll-horizontal]{
+  overflow-x:scroll;
+  overflow-y:hidden;
+}
+[scroll-both]{
+  overflow:scroll;
+}
+
+
+/* ============================================================================= */
+/* Sidebar entrance animations. */
+/* Follow the pattern below to create new sidebar animations. */ 
+
+/* Sidebar-foldin */
+/* ==================*/
+
+[sidebar-foldin] [sidebar]{
+  right:0;
+  perspective:500px;
+  background:transparent;
+}
+
+[sidebar-foldin] [sidebar] [sidebar-inner]{
+    position:fixed;
+    width:4rem;
+    top:0rem;
+    padding-top:$topbar-height;
+    transition:all 0.3s ease-out;
+    transform:rotateY(-90deg) ;
+    transform-origin:100;
+
+    left:-6.25rem;
+    bottom:0;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    opacity:0;
+  }
+[sidebar-foldin] [main]{
+  transition:transform 0.3s ease-out;
+}
+[sidebar-foldin].showsidebar [sidebar] [sidebar-inner]{
+  transform: rotateY(0deg);
+  opacity:1;
+  left:0;
+
+}
+
+[sidebar-foldin].showsidebar [main]{
+  transform:translate(4rem);
+}
+
+[sidebar-foldin].showsidebar [topbar]{
+  transform:translate(4rem);
+}
+
+
+/* Sidebar-slidein */
+/* ==================*/
+
+[sidebar-slidein] [sidebar] [sidebar-inner]{
+  width:4rem;
+  display:none;
+  /* transition:all 0.3s ease-out; */
+  background:silver;
+  z-index:3;
+}
+
+[sidebar-slidein].showsidebar [sidebar] [sidebar-inner]{
+display:inline-block;
+  
+  animation-duration: 0.7s ;
+  animation-easing: ease-in;
+  animation-fill-mode: both;
+  animation-name: bounceInLeft;
+}
+
+[sidebar-slidein] [sidebar]{
+
+  width:5rem; /* If you use shadow on sidebar-inner make sure this one is wide enough to fit the shadow. */
+  margin-right:2rem;
+  background:white;
+}
+
+[sidebar-slidein] [main]{
+  transition:all 0.3s ease-out;
+}
+
+
+
+[sidebar-slidein].showsidebar [main]{
+  /* transform:translate(4rem); */
+}
+
+[sidebar-slidein].showsidebar [topbar]{
+   /* transform:translate(13rem); */ /* set to sidebar width. */
+}
+
+
+.showsidebar [topbar] [togglesidebar]{
+    opacity:1;
+    transform:rotate(270deg);
+    background-image:url(http://localhost:9035/images/entypo+/cross.svg);
+  }
