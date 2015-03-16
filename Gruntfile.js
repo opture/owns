@@ -216,7 +216,15 @@ module.exports = function (grunt) {
         }
       }
     },
-
+    riot: {
+      dist: {
+          expand: true,
+          cwd: '<%= app %>/tags/',
+          src: '**/*.tag',
+          dest: '<%= app %>/scripts/tags',
+          ext: '.js'
+      }
+    },
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -369,6 +377,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'riot',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -399,6 +408,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'riot',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
