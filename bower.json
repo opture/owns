@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "jquery": "~1.11.1",
-    "jquery-viewport-checker": "~1.7.4"
+    "jquery-viewport-checker": "~1.7.4",
+    "riot": "~2.0.13"
   }
 }
