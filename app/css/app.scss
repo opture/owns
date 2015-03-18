@@ -1,11 +1,11 @@
-article{
+t7-article{
   background:white;
   width: 400px;
   max-width: 100%;
   margin:0 auto;
 
 }
-article img {
+t7-article img {
   width:400px;
   max-width:100%;
 }
@@ -18,6 +18,10 @@ h2 {
 img.icon {
     width:3rem;
     height:3rem;
+}
+.small-icon{
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .hidden{
   opacity:0;

@@ -2,31 +2,28 @@
 /* jshint eqeqeq:false, eqnull:true */
 
 	//Toggle if app should show sidebar.
-	document.querySelectorAll("[togglesidebar]")[0].addEventListener('click', function(){
-		document.querySelectorAll("[app]")[0].classList.toggle('showsidebar');
+	document.querySelectorAll('[togglesidebar]')[0].addEventListener('click', function(e){
+		'use strict';
+		e.preventDefault();
+		e.stopPropagation();
+		document.querySelectorAll('[app]')[0].classList.toggle('showsidebar');
 	});
-	$('[app]').on('tap', function(){
-		console.log('remove sidebar');
-		if ( this.classList.contains('showsidebar') ){
-			this.classList.remove('showsidebar');	
-			return false;
-		}
-		
-		
-	});
+
 		//Use the viewportchecker to show elements.
     	$(function(){
+    		'use strict';
             jQuery('.hidden').viewportChecker({
                 classToAdd: 'fadeInLeft ',
                 offset:10
             });
         });
         $('[main]').on('scroll', function(){
+        	'use strict';
             console.log('st: ' + $(this).scrollTop());
             console.log('ih: ' + $(this).innerHeight());
             console.log('sh: ' + this.scrollHeight);
             if(this.scrollHeight -100 < ($(this).innerHeight() + $(this).scrollTop()) ){
-                console.log("hit ol' rock bottom, reload more content");
+                console.log('hit ol rock bottom, reload more content');
                 //Trigger the event for the current store to fetch more data from end-point.
 
             }
@@ -168,8 +165,8 @@ function animateInRow(top,items,parent,count,reverse){
 	},animateTime);
 }
 function heroAnimation(element){
-		'use strict';
-	var element= $(element);
+	'use strict';
+	element = $(element);
 	//Fade out all the sibling elements.
 	setTimeout(function(){
 		element.parent().siblings().css('transition','opacity 200ms cubic-bezier(0.420, 0.000, 0.580, 1.000)');
@@ -223,7 +220,7 @@ function heroAnimation(element){
 
 	$('body').append($overlay);
 
- 	
+
  	var top = 0;
  	if ($(window).width() > 767 && offset.top < 0) {
  		top=(offset.top - element.height()*0.75);
@@ -236,6 +233,7 @@ function heroAnimation(element){
 
 }
 $('[hero-animation]').on('tap', function(){
+	'use strict';
 	heroAnimation(this);
 });
 

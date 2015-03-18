@@ -1,6 +1,8 @@
-/* exported StorageAdapter */
-/* global  _ */
+/* jshint eqeqeq:false, eqnull:false */
+/* exported BaseStore */
+/* global  _, riot */
 function BaseStore(options) {
+    'use strict';
     riot.observable(this);
     var adapter = this;
 
@@ -12,46 +14,46 @@ function BaseStore(options) {
 
     //Set for how long data is considered to be fresh, makes a new request after this time.
     adapter.validHours= options.validHours || 168;
-    
+
     //Keeps the collection of items.
     adapter.collection = options.collection || [];
-    
+
     //The type of the individual items in the collection.
     adapter.modelType = options.modelType || function () { };
-    
+
     //Setts the name of the modelcollection, used internally to store in localstorage.
     adapter.modelName = options.modelName || 'NONAME';
-    
+
     //Set the models id field to enable us to retreive items based on this property.
     adapter.modelIdField = options.modelIdField || '';
-    
+
     //Sets the remote url to fetch a colleciton of item.
     adapter.remoteUrlCollection = options.remoteUrlCollection || '';
-    
+
     //Set the remote url to fetch items by id
     adapter.remoteUrlById = options.remoteUrlById || '';
-    
+
     //Override function for successful received data from remote.
     adapter.remoteFetchSuccess = options.remoteFetchSuccess || adapter.getItemsSuccess;
-    
+
     //Function to execute if remotereceived failed.
     adapter.remoteFetchFail = options.remoteFetchFail || function () { };
-    
+
     //Default function to sort received data.
     adapter.defaultSortFunction = options.defaultSortFunction || function () { };
-    
+
     //Default function to filter only wanted records
     adapter.defaultFilterFunction = options.defaultFilterFunction || function () { return true;};
-    
+
     //Wrapper propertyname for collection received from remote.
     adapter.collectionWrapper = options.collectionWrapper || null;
-    
+
     //wrapper propertyname for objects received from remote.
     adapter.objectWrapper = options.objectWrapper || null;
-    
+
     //Options for remote call as object.
     adapter.remoteOptions = options.remoteOptions || {};
-    
+
     //Append to url ie: webben7.se/api/lunch/[2015-02-27]
     adapter.remoteAppendUrl = options.remoteAppendUrl || null;
     //function for updated element.
@@ -91,7 +93,7 @@ function BaseStore(options) {
             } else {
                 $('#loadCounter').html('Laddat ' + retval.length + ' av ' + idArray.length);
             }
-            
+
             console.log(retval.length);
             if (retval.length === idArray.length) {
                 $('#loadCounter').remove();
@@ -155,7 +157,7 @@ function BaseStore(options) {
         console.log('is loading: ' + adapter.collectionIsLoading);
         if (adapter.collectionIsLoading) {
             console.log('something is still loading');
-            //Wait for the collection to load... 
+            //Wait for the collection to load...
             // setTimeout(function () {
             //     adapter.getCollection(callback);
             // }, 1500);
@@ -168,7 +170,7 @@ function BaseStore(options) {
             //First try to get  possible local stored collection.
             //adapter.getCollectionLocal(callback, false);
             //The make a remote call and tell the callback to update the DOM.
-            console.log('force remote fetching: ' + adapter.modelName)
+            console.log('force remote fetching: ' + adapter.modelName);
             //adapter.getCollectionRemote(callback, false);
             adapter.collectionIsLoading = false;
             return;
@@ -199,7 +201,7 @@ function BaseStore(options) {
     };
 
     //Get a local collection, if it fails fetch it remotely.
-    adapter.getCollectionLocal = function (callback, update) {
+    adapter.getCollectionLocal = function (callback) {
         callback = callback || function () { };
         console.log('load collection locally');
         //Load a collection from localstorage.
@@ -207,9 +209,9 @@ function BaseStore(options) {
         var parsedCollection;
 
         //If there are nothing stored local return false.
-        if (!localStoredCollection) { 
+        if (!localStoredCollection) {
             console.log('Nothing stored');
-            return false; 
+            return false;
         }
 
         //Check if its toooo old data, then make a remote call and update the old data.
@@ -225,7 +227,7 @@ function BaseStore(options) {
         //     console.log('local callback;');
         //     adapter.collectionIsLoading = false;
         //     callback(adapter.sortedCollection(), update);
-            
+
         //     return true;
         // }
         //callback(adapter.sortedCollection(), update);
@@ -242,7 +244,7 @@ function BaseStore(options) {
         // };
         // query = $.extend(query, adapter.remoteOptions);
         $.ajax({
-            url: adapter.remoteUrlCollection + (adapter.remoteAppendUrl != undefined  ? "/" + adapter.remoteAppendUrl[0] : ''),
+            url: adapter.remoteUrlCollection + (adapter.remoteAppendUrl !== undefined  ? '/' + adapter.remoteAppendUrl[0] : ''),
             dataType: 'json',
             data: adapter.remoteOptions,
             success: function (data) {
@@ -252,7 +254,7 @@ function BaseStore(options) {
                 //Is there a wrapper for the collection.
                 if (adapter.collectionWrapper && data[adapter.collectionWrapper] !== null){
                     console.log('collection wrapped with: ' + adapter.collectionWrapper);
-                    adapter.getItemsSuccess(data[adapter.collectionWrapper]);    
+                    adapter.getItemsSuccess(data[adapter.collectionWrapper]);
                 }else{
                     adapter.getItemsSuccess(data);
                 }
@@ -262,7 +264,7 @@ function BaseStore(options) {
                 //callback(adapter.sortedCollection(), update);
                 adapter.trigger(adapter.modelName + '_collection_changed', adapter.collection);
                 //Store this to the local collection.
-                adapter.storeCollectionLocal();               
+                adapter.storeCollectionLocal();
             },
             error: function (xhr) {
                 //adapter.remoteOptions = {};
@@ -280,7 +282,7 @@ function BaseStore(options) {
         var curNode = {};
         if (!Array.isArray(data)) { data = [].concat(data); }
         if (!data) { return; }
-        
+
         for (var i = 0;i < data.length;i++) {
             if (adapter.objectWrapper && data[i][adapter.objectWrapper] !== undefined){
                 console.log('object wrapped with: ' + adapter.objectWrapper);
@@ -300,7 +302,7 @@ function BaseStore(options) {
                 } else if (!adapter.isInCollection(curNode)) {
                     //Add a item to the collection
                     //console.log('adding item: ' + curNode[adapter.modelIdField]);
-                    var newItem = new adapter.modelType(curNode)
+                    var newItem = new adapter.modelType(curNode);
                     adapter.collection.push(newItem);
                     adapter.trigger(adapter.modelName + '_item_added', newItem);
                 } else {
@@ -320,7 +322,7 @@ function BaseStore(options) {
     };
 
     adapter.isInCollection = function(obj){
-        var curObj = _.find(adapter.collection, function(item){ 
+        var curObj = _.find(adapter.collection, function(item){
             return item[adapter.modelIdField] === obj[adapter.modelIdField];
         });
         if (!curObj) {

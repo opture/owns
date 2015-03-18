@@ -1,1 +1,2 @@
-app/js/3rdparty/jquery.mobile-events.min.js
+app/js/3rdparty/*.js
+app/js/tags/**.js

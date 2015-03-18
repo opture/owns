@@ -42,11 +42,9 @@
 	<div main>
 		<div container>
 			<div min-320-col-1 min-480-col-1 min-768-col-2 min-992-col-2 pad-2 margin-none>
-	        <article center-block border-tr-radius-2 border-tl-radius-2 border-tr-radius-2 border-tl-radius-2 hero-animation overflow-hidden margin-none shadow-z-1 class="animated-slow hidden" >
-	                    <h2 center-text pad-1 margin-none>Rubrik</h2>
-	                    <img center-block margin-none style="min-height:120px;" src="http://lorempixel.com/320/160/sports" /><p pad-1 margin-none overflow-hidden>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur natus sed porro tempora, nostrum culpa.</p>
-	                    <p hidden pad-1 margin-none overflow-hidden>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora vitae, dolores hic dolore ipsam necessitatibus nostrum laboriosam sunt, cum ex magni quaerat facere sapiente expedita nihil veritatis, magnam eum! Consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolores saepe harum, asperiores. Commodi placeat a incidunt voluptatem, quasi voluptates! Placeat nihil nam magni, quas quaerat ex ab a reprehenderit? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus dolore cum similique temporibus voluptas, eius magnam ducimus pariatur corrupti quo voluptates libero laboriosam ipsa perspiciatis qui deleniti ex in eum!</p>
-	            </article>
+	        <t7-article center-block border-tr-radius-2 border-tl-radius-2 border-tr-radius-2 border-tl-radius-2 hero-animation overflow-hidden margin-none shadow-z-1 class="animated-slow hidden" >
+
+            </t7-article>
 	        </div><div min-320-col-1 min-480-col-1 min-768-col-2 min-992-col-2 pad-2 margin-none>
 	            <article center-block border-tr-radius-2 border-tl-radius-2 hero-animation overflow-hidden margin-none shadow-z-1 class="animated-slow hidden" >
 	                    <h2 center-text pad-1 margin-none>Lång Rubrik</h2>
@@ -124,6 +122,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-viewport-checker/src/jquery.viewportchecker.js"></script>
     <script src="bower_components/riot/riot.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -140,10 +139,15 @@
     <!-- build:js({app,.tmp}) js/main.js -->
     <script src="js/3rdparty/jquery.mobile-events.min.js"></script>
     <script src="js/3rdparty/riotcontrol.js"></script>
-
-    <script src="js/index.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/basestore.js"></script>
+	<script src="js/tags/elements/t7-article.js"></script>
+    <script src="js/index.phonegap.js"></script>
     <script src="js/interaction-events.js"></script>
     <!-- endbuild -->
+	<script>
 
+        riot.mount('t7-article');
+	</script>
 </body>
 </html>
